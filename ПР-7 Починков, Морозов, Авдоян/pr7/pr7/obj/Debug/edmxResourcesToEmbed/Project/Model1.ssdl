@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище pr7Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="int" Nullable="false" />
+    <Property Name="users" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Компьютер">
+    <Key>
+      <PropertyRef Name="Номер_компьютера" />
+    </Key>
+    <Property Name="Номер_компьютера" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="IP_адрес" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Кабинет" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Характеристики" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Программа">
+    <Key>
+      <PropertyRef Name="Код_программы" />
+    </Key>
+    <Property Name="Код_программы" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Название" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Версия" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Класс" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Объем" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "pr7.dbo.Установка" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Установка">
+    <Key>
+      <PropertyRef Name="Код_программы" />
+      <PropertyRef Name="Номер_компьютера" />
+      <PropertyRef Name="Дата_установки" />
+      <PropertyRef Name="Режим_установки" />
+    </Key>
+    <Property Name="Код_программы" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Номер_компьютера" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Дата_установки" Type="date" Nullable="false" />
+    <Property Name="Режим_установки" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Установка__Код_п__398D8EEE">
+    <End Role="Программа" Type="Self.Программа" Multiplicity="1" />
+    <End Role="Установка" Type="Self.Установка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Программа">
+        <PropertyRef Name="Код_программы" />
+      </Principal>
+      <Dependent Role="Установка">
+        <PropertyRef Name="Код_программы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Установка__Номер__3A81B327">
+    <End Role="Компьютер" Type="Self.Компьютер" Multiplicity="1" />
+    <End Role="Установка" Type="Self.Установка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Компьютер">
+        <PropertyRef Name="Номер_компьютера" />
+      </Principal>
+      <Dependent Role="Установка">
+        <PropertyRef Name="Номер_компьютера" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище pr7ModelContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Компьютер" EntityType="Self.Компьютер" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Программа" EntityType="Self.Программа" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Установка" EntityType="Self.Установка" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Установка].[Код_программы] AS [Код_программы], 
+    [Установка].[Номер_компьютера] AS [Номер_компьютера], 
+    [Установка].[Дата_установки] AS [Дата_установки], 
+    [Установка].[Режим_установки] AS [Режим_установки]
+    FROM [dbo].[Установка] AS [Установка]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Установка__Код_п__398D8EEE" Association="Self.FK__Установка__Код_п__398D8EEE">
+      <End Role="Программа" EntitySet="Программа" />
+      <End Role="Установка" EntitySet="Установка" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Установка__Номер__3A81B327" Association="Self.FK__Установка__Номер__3A81B327">
+      <End Role="Компьютер" EntitySet="Компьютер" />
+      <End Role="Установка" EntitySet="Установка" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

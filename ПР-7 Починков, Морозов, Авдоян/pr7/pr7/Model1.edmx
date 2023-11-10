@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище pr7Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "pr7.dbo.Users" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Login" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Компьютер">
+          <Key>
+            <PropertyRef Name="Номер_компьютера" />
+          </Key>
+          <Property Name="Номер_компьютера" Type="int" Nullable="false" />
+          <Property Name="IP_адрес" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Кабинет" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Характеристики" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Программа">
+          <Key>
+            <PropertyRef Name="Код_программы" />
+          </Key>
+          <Property Name="Код_программы" Type="int" Nullable="false" />
+          <Property Name="Название" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Версия" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Класс" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Объем" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "pr7.dbo.Установка" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Установка">
+          <Key>
+            <PropertyRef Name="Код_программы" />
+            <PropertyRef Name="Номер_компьютера" />
+            <PropertyRef Name="Дата_установки" />
+            <PropertyRef Name="Режим_установки" />
+          </Key>
+          <Property Name="Код_программы" Type="int" Nullable="false" />
+          <Property Name="Номер_компьютера" Type="int" Nullable="false" />
+          <Property Name="Дата_установки" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Режим_установки" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Установка__Код_п__276EDEB3">
+          <End Role="Программа" Type="Self.Программа" Multiplicity="1" />
+          <End Role="Установка" Type="Self.Установка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Программа">
+              <PropertyRef Name="Код_программы" />
+            </Principal>
+            <Dependent Role="Установка">
+              <PropertyRef Name="Код_программы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Установка__Номер__286302EC">
+          <End Role="Компьютер" Type="Self.Компьютер" Multiplicity="1" />
+          <End Role="Установка" Type="Self.Установка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Компьютер">
+              <PropertyRef Name="Номер_компьютера" />
+            </Principal>
+            <Dependent Role="Установка">
+              <PropertyRef Name="Номер_компьютера" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище pr7ModelContainer">
+          <EntitySet Name="Компьютер" EntityType="Self.Компьютер" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Программа" EntityType="Self.Программа" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Users].[Login] AS [Login], 
+    [Users].[Password] AS [Password]
+    FROM [dbo].[Users] AS [Users]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Установка" EntityType="Self.Установка" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Установка].[Код_программы] AS [Код_программы], 
+    [Установка].[Номер_компьютера] AS [Номер_компьютера], 
+    [Установка].[Дата_установки] AS [Дата_установки], 
+    [Установка].[Режим_установки] AS [Режим_установки]
+    FROM [dbo].[Установка] AS [Установка]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Установка__Код_п__276EDEB3" Association="Self.FK__Установка__Код_п__276EDEB3">
+            <End Role="Программа" EntitySet="Программа" />
+            <End Role="Установка" EntitySet="Установка" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Установка__Номер__286302EC" Association="Self.FK__Установка__Номер__286302EC">
+            <End Role="Компьютер" EntitySet="Компьютер" />
+            <End Role="Установка" EntitySet="Установка" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pr7Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Компьютер">
+          <Key>
+            <PropertyRef Name="Номер_компьютера" />
+          </Key>
+          <Property Name="Номер_компьютера" Type="Int32" Nullable="false" />
+          <Property Name="IP_адрес" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Кабинет" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Характеристики" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Установка" Relationship="Self.FK__Установка__Номер__286302EC" FromRole="Компьютер" ToRole="Установка" />
+        </EntityType>
+        <EntityType Name="Программа">
+          <Key>
+            <PropertyRef Name="Код_программы" />
+          </Key>
+          <Property Name="Код_программы" Type="Int32" Nullable="false" />
+          <Property Name="Название" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Версия" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Класс" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Объем" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Установка" Relationship="Self.FK__Установка__Код_п__276EDEB3" FromRole="Программа" ToRole="Установка" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Login" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Установка">
+          <Key>
+            <PropertyRef Name="Код_программы" />
+            <PropertyRef Name="Номер_компьютера" />
+            <PropertyRef Name="Дата_установки" />
+            <PropertyRef Name="Режим_установки" />
+          </Key>
+          <Property Name="Код_программы" Type="Int32" Nullable="false" />
+          <Property Name="Номер_компьютера" Type="Int32" Nullable="false" />
+          <Property Name="Дата_установки" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Режим_установки" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Компьютер" Relationship="Self.FK__Установка__Номер__286302EC" FromRole="Установка" ToRole="Компьютер" />
+          <NavigationProperty Name="Программа" Relationship="Self.FK__Установка__Код_п__276EDEB3" FromRole="Установка" ToRole="Программа" />
+        </EntityType>
+        <Association Name="FK__Установка__Номер__286302EC">
+          <End Role="Компьютер" Type="Self.Компьютер" Multiplicity="1" />
+          <End Role="Установка" Type="Self.Установка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Компьютер">
+              <PropertyRef Name="Номер_компьютера" />
+            </Principal>
+            <Dependent Role="Установка">
+              <PropertyRef Name="Номер_компьютера" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Установка__Код_п__276EDEB3">
+          <End Role="Программа" Type="Self.Программа" Multiplicity="1" />
+          <End Role="Установка" Type="Self.Установка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Программа">
+              <PropertyRef Name="Код_программы" />
+            </Principal>
+            <Dependent Role="Установка">
+              <PropertyRef Name="Код_программы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pr7Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Компьютер" EntityType="Self.Компьютер" />
+          <EntitySet Name="Программа" EntityType="Self.Программа" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Установка" EntityType="Self.Установка" />
+          <AssociationSet Name="FK__Установка__Номер__286302EC" Association="Self.FK__Установка__Номер__286302EC">
+            <End Role="Компьютер" EntitySet="Компьютер" />
+            <End Role="Установка" EntitySet="Установка" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Установка__Код_п__276EDEB3" Association="Self.FK__Установка__Код_п__276EDEB3">
+            <End Role="Программа" EntitySet="Программа" />
+            <End Role="Установка" EntitySet="Установка" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище pr7ModelContainer" CdmEntityContainer="pr7Entities2">
+          <EntitySetMapping Name="Компьютер">
+            <EntityTypeMapping TypeName="pr7Model.Компьютер">
+              <MappingFragment StoreEntitySet="Компьютер">
+                <ScalarProperty Name="Номер_компьютера" ColumnName="Номер_компьютера" />
+                <ScalarProperty Name="IP_адрес" ColumnName="IP_адрес" />
+                <ScalarProperty Name="Кабинет" ColumnName="Кабинет" />
+                <ScalarProperty Name="Характеристики" ColumnName="Характеристики" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Программа">
+            <EntityTypeMapping TypeName="pr7Model.Программа">
+              <MappingFragment StoreEntitySet="Программа">
+                <ScalarProperty Name="Код_программы" ColumnName="Код_программы" />
+                <ScalarProperty Name="Название" ColumnName="Название" />
+                <ScalarProperty Name="Версия" ColumnName="Версия" />
+                <ScalarProperty Name="Класс" ColumnName="Класс" />
+                <ScalarProperty Name="Объем" ColumnName="Объем" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="pr7Model.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Установка">
+            <EntityTypeMapping TypeName="pr7Model.Установка">
+              <MappingFragment StoreEntitySet="Установка">
+                <ScalarProperty Name="Код_программы" ColumnName="Код_программы" />
+                <ScalarProperty Name="Номер_компьютера" ColumnName="Номер_компьютера" />
+                <ScalarProperty Name="Дата_установки" ColumnName="Дата_установки" />
+                <ScalarProperty Name="Режим_установки" ColumnName="Режим_установки" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

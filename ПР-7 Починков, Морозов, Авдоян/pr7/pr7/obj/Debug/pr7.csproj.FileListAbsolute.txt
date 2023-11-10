@@ -1,0 +1,64 @@
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\pr7.csproj.AssemblyReference.cache
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\MainWindow.g.cs
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\Project\Page1.g.cs
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\App.g.cs
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\pr7_Content.g.cs
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\pr7_MarkupCompile.cache
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\pr7_MarkupCompile.lref
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\Project\Page2.g.cs
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\Project\Page3.g.cs
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\Project\Page4.g.cs
+C:\Users\Александр\source\repos\pr7\pr7\bin\Debug\pr7.exe.config
+C:\Users\Александр\source\repos\pr7\pr7\bin\Debug\pr7.exe
+C:\Users\Александр\source\repos\pr7\pr7\bin\Debug\pr7.pdb
+C:\Users\Александр\source\repos\pr7\pr7\bin\Debug\EntityFramework.dll
+C:\Users\Александр\source\repos\pr7\pr7\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Александр\source\repos\pr7\pr7\bin\Debug\EntityFramework.xml
+C:\Users\Александр\source\repos\pr7\pr7\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Александр\source\repos\pr7\pr7\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\MainWindow.baml
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\Project\Page1.baml
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\Project\Page2.baml
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\Project\Page3.baml
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\Project\Page4.baml
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\pr7.g.resources
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\pr7.Properties.Resources.resources
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\pr7.csproj.GenerateResource.cache
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\pr7.csproj.CoreCompileInputs.cache
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\pr7.csproj.CopyComplete
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\pr7.exe
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\pr7.pdb
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\Project\login.g.cs
+C:\Users\Александр\source\repos\pr7\pr7\obj\Debug\Project\login.baml
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\bin\Debug\pr7.exe.config
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\bin\Debug\pr7.exe
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\bin\Debug\pr7.pdb
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\bin\Debug\EntityFramework.dll
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\bin\Debug\EntityFramework.xml
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\pr7.csproj.AssemblyReference.cache
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\MainWindow.g.cs
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\Project\login.g.cs
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\Project\Page1.g.cs
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\Project\Page2.g.cs
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\Project\Page3.g.cs
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\Project\Page4.g.cs
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\App.g.cs
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\pr7_Content.g.cs
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\pr7_MarkupCompile.cache
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\pr7_MarkupCompile.lref
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\MainWindow.baml
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\Project\login.baml
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\Project\Page1.baml
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\Project\Page2.baml
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\Project\Page3.baml
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\Project\Page4.baml
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\pr7.g.resources
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\pr7.Properties.Resources.resources
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\pr7.csproj.GenerateResource.cache
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\pr7.csproj.CoreCompileInputs.cache
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\pr7.csproj.CopyComplete
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\pr7.exe
+C:\Users\Александр\Desktop\ПР-7 Починков, Морозов, Авдоян\ПР-7 Починков, Морозов, Авдоян\pr7\pr7\obj\Debug\pr7.pdb

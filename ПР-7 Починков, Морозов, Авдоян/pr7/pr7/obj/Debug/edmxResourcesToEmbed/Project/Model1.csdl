@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pr7Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Int32" Nullable="false" />
+    <Property Name="users" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Компьютер">
+    <Key>
+      <PropertyRef Name="Номер_компьютера" />
+    </Key>
+    <Property Name="Номер_компьютера" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IP_адрес" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Кабинет" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Характеристики" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Установка" Relationship="Self.FK__Установка__Номер__3A81B327" FromRole="Компьютер" ToRole="Установка" />
+  </EntityType>
+  <EntityType Name="Программа">
+    <Key>
+      <PropertyRef Name="Код_программы" />
+    </Key>
+    <Property Name="Код_программы" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Название" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Версия" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Класс" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Объем" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Установка" Relationship="Self.FK__Установка__Код_п__398D8EEE" FromRole="Программа" ToRole="Установка" />
+  </EntityType>
+  <EntityType Name="Установка">
+    <Key>
+      <PropertyRef Name="Код_программы" />
+      <PropertyRef Name="Номер_компьютера" />
+      <PropertyRef Name="Дата_установки" />
+      <PropertyRef Name="Режим_установки" />
+    </Key>
+    <Property Name="Код_программы" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Номер_компьютера" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Дата_установки" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Режим_установки" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Компьютер" Relationship="Self.FK__Установка__Номер__3A81B327" FromRole="Установка" ToRole="Компьютер" />
+    <NavigationProperty Name="Программа" Relationship="Self.FK__Установка__Код_п__398D8EEE" FromRole="Установка" ToRole="Программа" />
+  </EntityType>
+  <Association Name="FK__Установка__Номер__3A81B327">
+    <End Role="Компьютер" Type="Self.Компьютер" Multiplicity="1" />
+    <End Role="Установка" Type="Self.Установка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Компьютер">
+        <PropertyRef Name="Номер_компьютера" />
+      </Principal>
+      <Dependent Role="Установка">
+        <PropertyRef Name="Номер_компьютера" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Установка__Код_п__398D8EEE">
+    <End Role="Программа" Type="Self.Программа" Multiplicity="1" />
+    <End Role="Установка" Type="Self.Установка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Программа">
+        <PropertyRef Name="Код_программы" />
+      </Principal>
+      <Dependent Role="Установка">
+        <PropertyRef Name="Код_программы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pr7Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="Компьютер" EntityType="Self.Компьютер" />
+    <EntitySet Name="Программа" EntityType="Self.Программа" />
+    <EntitySet Name="Установка" EntityType="Self.Установка" />
+    <AssociationSet Name="FK__Установка__Номер__3A81B327" Association="Self.FK__Установка__Номер__3A81B327">
+      <End Role="Компьютер" EntitySet="Компьютер" />
+      <End Role="Установка" EntitySet="Установка" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Установка__Код_п__398D8EEE" Association="Self.FK__Установка__Код_п__398D8EEE">
+      <End Role="Программа" EntitySet="Программа" />
+      <End Role="Установка" EntitySet="Установка" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(pr7Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(pr7Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

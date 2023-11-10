@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище pr7ModelContainer" CdmEntityContainer="pr7Entities1">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="pr7Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="pr7Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="users" ColumnName="users" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Компьютер">
+      <EntityTypeMapping TypeName="pr7Model.Компьютер">
+        <MappingFragment StoreEntitySet="Компьютер">
+          <ScalarProperty Name="Номер_компьютера" ColumnName="Номер_компьютера" />
+          <ScalarProperty Name="IP_адрес" ColumnName="IP_адрес" />
+          <ScalarProperty Name="Кабинет" ColumnName="Кабинет" />
+          <ScalarProperty Name="Характеристики" ColumnName="Характеристики" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Программа">
+      <EntityTypeMapping TypeName="pr7Model.Программа">
+        <MappingFragment StoreEntitySet="Программа">
+          <ScalarProperty Name="Код_программы" ColumnName="Код_программы" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Версия" ColumnName="Версия" />
+          <ScalarProperty Name="Класс" ColumnName="Класс" />
+          <ScalarProperty Name="Объем" ColumnName="Объем" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Установка">
+      <EntityTypeMapping TypeName="pr7Model.Установка">
+        <MappingFragment StoreEntitySet="Установка">
+          <ScalarProperty Name="Код_программы" ColumnName="Код_программы" />
+          <ScalarProperty Name="Номер_компьютера" ColumnName="Номер_компьютера" />
+          <ScalarProperty Name="Дата_установки" ColumnName="Дата_установки" />
+          <ScalarProperty Name="Режим_установки" ColumnName="Режим_установки" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище pr7Model.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище pr7Model.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище pr7Model.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище pr7Model.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="pr7Model.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище pr7Model.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="pr7Model.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище pr7Model.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище pr7Model.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

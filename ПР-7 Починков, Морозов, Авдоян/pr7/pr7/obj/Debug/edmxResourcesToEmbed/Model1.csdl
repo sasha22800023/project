@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pr7Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Компьютер">
+    <Key>
+      <PropertyRef Name="Номер_компьютера" />
+    </Key>
+    <Property Name="Номер_компьютера" Type="Int32" Nullable="false" />
+    <Property Name="IP_адрес" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Кабинет" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Характеристики" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Установка" Relationship="Self.FK__Установка__Номер__286302EC" FromRole="Компьютер" ToRole="Установка" />
+  </EntityType>
+  <EntityType Name="Программа">
+    <Key>
+      <PropertyRef Name="Код_программы" />
+    </Key>
+    <Property Name="Код_программы" Type="Int32" Nullable="false" />
+    <Property Name="Название" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Версия" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Класс" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Объем" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Установка" Relationship="Self.FK__Установка__Код_п__276EDEB3" FromRole="Программа" ToRole="Установка" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Login" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Установка">
+    <Key>
+      <PropertyRef Name="Код_программы" />
+      <PropertyRef Name="Номер_компьютера" />
+      <PropertyRef Name="Дата_установки" />
+      <PropertyRef Name="Режим_установки" />
+    </Key>
+    <Property Name="Код_программы" Type="Int32" Nullable="false" />
+    <Property Name="Номер_компьютера" Type="Int32" Nullable="false" />
+    <Property Name="Дата_установки" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Режим_установки" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Компьютер" Relationship="Self.FK__Установка__Номер__286302EC" FromRole="Установка" ToRole="Компьютер" />
+    <NavigationProperty Name="Программа" Relationship="Self.FK__Установка__Код_п__276EDEB3" FromRole="Установка" ToRole="Программа" />
+  </EntityType>
+  <Association Name="FK__Установка__Номер__286302EC">
+    <End Role="Компьютер" Type="Self.Компьютер" Multiplicity="1" />
+    <End Role="Установка" Type="Self.Установка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Компьютер">
+        <PropertyRef Name="Номер_компьютера" />
+      </Principal>
+      <Dependent Role="Установка">
+        <PropertyRef Name="Номер_компьютера" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Установка__Код_п__276EDEB3">
+    <End Role="Программа" Type="Self.Программа" Multiplicity="1" />
+    <End Role="Установка" Type="Self.Установка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Программа">
+        <PropertyRef Name="Код_программы" />
+      </Principal>
+      <Dependent Role="Установка">
+        <PropertyRef Name="Код_программы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pr7Entities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Компьютер" EntityType="Self.Компьютер" />
+    <EntitySet Name="Программа" EntityType="Self.Программа" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="Установка" EntityType="Self.Установка" />
+    <AssociationSet Name="FK__Установка__Номер__286302EC" Association="Self.FK__Установка__Номер__286302EC">
+      <End Role="Компьютер" EntitySet="Компьютер" />
+      <End Role="Установка" EntitySet="Установка" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Установка__Код_п__276EDEB3" Association="Self.FK__Установка__Код_п__276EDEB3">
+      <End Role="Программа" EntitySet="Программа" />
+      <End Role="Установка" EntitySet="Установка" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

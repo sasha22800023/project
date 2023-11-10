@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище pr7Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "pr7.dbo.Users" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Login" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Компьютер">
+    <Key>
+      <PropertyRef Name="Номер_компьютера" />
+    </Key>
+    <Property Name="Номер_компьютера" Type="int" Nullable="false" />
+    <Property Name="IP_адрес" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Кабинет" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Характеристики" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Программа">
+    <Key>
+      <PropertyRef Name="Код_программы" />
+    </Key>
+    <Property Name="Код_программы" Type="int" Nullable="false" />
+    <Property Name="Название" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Версия" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Класс" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Объем" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "pr7.dbo.Установка" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Установка">
+    <Key>
+      <PropertyRef Name="Код_программы" />
+      <PropertyRef Name="Номер_компьютера" />
+      <PropertyRef Name="Дата_установки" />
+      <PropertyRef Name="Режим_установки" />
+    </Key>
+    <Property Name="Код_программы" Type="int" Nullable="false" />
+    <Property Name="Номер_компьютера" Type="int" Nullable="false" />
+    <Property Name="Дата_установки" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Режим_установки" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Установка__Код_п__276EDEB3">
+    <End Role="Программа" Type="Self.Программа" Multiplicity="1" />
+    <End Role="Установка" Type="Self.Установка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Программа">
+        <PropertyRef Name="Код_программы" />
+      </Principal>
+      <Dependent Role="Установка">
+        <PropertyRef Name="Код_программы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Установка__Номер__286302EC">
+    <End Role="Компьютер" Type="Self.Компьютер" Multiplicity="1" />
+    <End Role="Установка" Type="Self.Установка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Компьютер">
+        <PropertyRef Name="Номер_компьютера" />
+      </Principal>
+      <Dependent Role="Установка">
+        <PropertyRef Name="Номер_компьютера" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище pr7ModelContainer">
+    <EntitySet Name="Компьютер" EntityType="Self.Компьютер" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Программа" EntityType="Self.Программа" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Users].[Login] AS [Login], 
+    [Users].[Password] AS [Password]
+    FROM [dbo].[Users] AS [Users]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Установка" EntityType="Self.Установка" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Установка].[Код_программы] AS [Код_программы], 
+    [Установка].[Номер_компьютера] AS [Номер_компьютера], 
+    [Установка].[Дата_установки] AS [Дата_установки], 
+    [Установка].[Режим_установки] AS [Режим_установки]
+    FROM [dbo].[Установка] AS [Установка]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Установка__Код_п__276EDEB3" Association="Self.FK__Установка__Код_п__276EDEB3">
+      <End Role="Программа" EntitySet="Программа" />
+      <End Role="Установка" EntitySet="Установка" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Установка__Номер__286302EC" Association="Self.FK__Установка__Номер__286302EC">
+      <End Role="Компьютер" EntitySet="Компьютер" />
+      <End Role="Установка" EntitySet="Установка" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

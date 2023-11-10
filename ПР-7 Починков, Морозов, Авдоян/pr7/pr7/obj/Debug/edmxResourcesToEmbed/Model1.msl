@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище pr7ModelContainer" CdmEntityContainer="pr7Entities2">
+    <EntitySetMapping Name="Компьютер">
+      <EntityTypeMapping TypeName="pr7Model.Компьютер">
+        <MappingFragment StoreEntitySet="Компьютер">
+          <ScalarProperty Name="Номер_компьютера" ColumnName="Номер_компьютера" />
+          <ScalarProperty Name="IP_адрес" ColumnName="IP_адрес" />
+          <ScalarProperty Name="Кабинет" ColumnName="Кабинет" />
+          <ScalarProperty Name="Характеристики" ColumnName="Характеристики" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Программа">
+      <EntityTypeMapping TypeName="pr7Model.Программа">
+        <MappingFragment StoreEntitySet="Программа">
+          <ScalarProperty Name="Код_программы" ColumnName="Код_программы" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Версия" ColumnName="Версия" />
+          <ScalarProperty Name="Класс" ColumnName="Класс" />
+          <ScalarProperty Name="Объем" ColumnName="Объем" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="pr7Model.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Установка">
+      <EntityTypeMapping TypeName="pr7Model.Установка">
+        <MappingFragment StoreEntitySet="Установка">
+          <ScalarProperty Name="Код_программы" ColumnName="Код_программы" />
+          <ScalarProperty Name="Номер_компьютера" ColumnName="Номер_компьютера" />
+          <ScalarProperty Name="Дата_установки" ColumnName="Дата_установки" />
+          <ScalarProperty Name="Режим_установки" ColumnName="Режим_установки" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
